@@ -2,6 +2,38 @@ const db = require('../models/usersModels');
 
 const userController = {};
 
+// user login
+userController.userLogin = async (req, res, next) => {
+
+  const { username, password } = req.body;
+
+  const createLoginQuery = 
+    'SELECT username, password_digest FROM users WHERE username=$1 AND password_digest=$2'
+    
+  const params = [
+    username,
+    password
+  ];
+
+  try {
+    const user = await db.query(createLoginQuery, params);
+
+    if (!user.rows.length) {
+      res.locals.isLoggedIn = { loggedIn: false };
+    } else if (user.rows[0].username = username) {
+      res.locals.isLoggedIn = { loggedIn: true };
+    };
+
+    //res.locals.user = user.rows[0];
+    return next();
+  } catch (error) {
+    return next({
+      error: `userController.createUser; ERROR: ${error} `,
+      message: 'Error occured in conrollers/userController.js'
+    });
+  }
+}
+
 //! TODO: are we actually creating the user with this query?
 //! There seems to be no change the users when running 
 //! GET requests to /users
