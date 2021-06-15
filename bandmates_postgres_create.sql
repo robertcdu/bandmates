@@ -1,4 +1,5 @@
 -- Create users table
+-- NOTNULL?
 CREATE TABLE users (
   _id SERIAL PRIMARY KEY,
   name VARCHAR ( 50 ),
@@ -13,6 +14,7 @@ CREATE TABLE users (
 );
 ​
 -- Populate users table
+-- Refactor to use more compact SQL code?
 INSERT INTO users(name, username, password_digest, email, gender, birthdate, skill_level, bio) VALUES ('Ian Badman','IanG', 'password', 'ian@ian.com', 'Man', '1996-02-05', 'amateur', 'Looking for more friends to make music with!');
 INSERT INTO users(name, username, password_digest, email, gender, birthdate, skill_level, bio) VALUES ('Jesse Jones', 'Jesse123', 'ilovemusic', 'jesse@aol.com', 'non-binary', '1999-10-30', 'amateur', 'I’m looking to form a band to play gigs in the general NYC area');
 INSERT INTO users(name, username, password_digest, email, gender, birthdate, skill_level, bio) VALUES ('Nicky Melancholy', 'Nickynick', 'livetodie420', 'nick@yahoo.com', 'Man', '1992-12-31', 'amateur', 'Hey y’all, I’m looking to improve my music production skills');
