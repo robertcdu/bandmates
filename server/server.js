@@ -11,6 +11,10 @@ const userRouter = require('./routes/userRouter');
 
 app.use('/api', userRouter);
 
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
+
 // unknown path handler
 app.use('*', (req, res) => {
 	res.status(404).send('Not Found');
