@@ -37,6 +37,8 @@ const Search = () => {
       .catch(err => console.log(err));
   }, []);
 
+// sperate lines 34 and 35 to new useffect
+
   const labelToSetState = {
     instruments: setInstrument,
     genre: setGenre,

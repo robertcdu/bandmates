@@ -12,6 +12,7 @@ import LogIn from './LogIn/LogIn';
 
 const App = () => (
   <Router>
+  
     <Switch>
       <Route path="/" exact component={LogIn}/>
       <Route path="/logIn" component={LogIn}/>
