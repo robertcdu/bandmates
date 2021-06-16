@@ -26,9 +26,9 @@ const Search = () => {
   const [location, setLocation] = useState('');
   const [shouldExcludeMen, setShouldExcludeMen] = useState(false);
   const [initialResults, setInitialResults] = useState([]);
-
+ // change line 31 to all users
   useEffect(() => {
-    fetch('/api/users')
+    fetch('/api/allusers')
       .then((res) => res.json())
       .then(({ users }) => {
         setInitialResults(users);
@@ -181,7 +181,7 @@ const Search = () => {
           <SearchResult key={`searchResult${i}`} {...result} />
         ))}
       </div>
-      {initialResults.length && !searchResults.length && (
+      {(initialResults.length && !searchResults.length) && (
         <div>No musicians found based on your criteria. Bummer!</div>
       )}
       {!initialResults.length && <div>Loading musicians, please wait ...</div>}
