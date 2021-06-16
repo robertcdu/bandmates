@@ -17,7 +17,7 @@ router.post(
 	userController.verifyUser,
 	cookieController.createCookie,
 	(req, res) => {
-		res.status(200).json(res.locals.isLoggedIn);
+		res.status(200).json(res.locals.userVerified);
 	}
 );
 

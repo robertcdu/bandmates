@@ -22,7 +22,7 @@ userController.verifyUser = async (req, res, next) => {
       return res.status(400).json({ loggedIn: false, message: 'Incorrect username or password' });
     } 
 
-    res.locals.isLoggedIn = { loggedIn: true };
+    res.locals.userVerified = { loggedIn: true };
     res.locals.user = user.rows[0];
 
     return next();
