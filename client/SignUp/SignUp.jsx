@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 //TODO: figure out how to select multiple values and store them in state
 // Because of this issue, right now a user signing up via our sign up
-// form can only select one instrument and one genre. 
+// form can only select one instrument and one genre.
 //! https://stackoverflow.com/questions/30190588/html-select-multiple-as-dropdown
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -32,14 +32,14 @@ const SignUp = () => {
     name: setName,
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.preventDefault();
-    let { name, value } = e.target;
-    const updateState = labelToSetState[name];
+    let { name, value } = e.target; // {name: e.target.name/ email, value: e.target.value/user@gmail.com }
+    const updateState = labelToSetState[name]; // setname(value)
     updateState(value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const user = {
@@ -59,152 +59,151 @@ const SignUp = () => {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-    }).then(() => {
-      setDidSignUp(true);
-    }).catch(err => setErrors(err));
+    })
+      .then(() => {
+        setDidSignUp(true);
+      })
+      .catch((err) => setErrors(err));
   };
 
   // This logic is redirecting to the Search component
-  // when someone logs in. 
+  // when someone logs in.
   let history = useHistory();
   if (didSignUp) history.push('/users');
-  
+
   return (
-    <div className="signUpAndLogIn">
-      <div id="signUpContainer">
+    <div className='signUpAndLogIn'>
+      <div id='signUpContainer'>
         <h1>Sign Up</h1>
-        {errors && (
-          <div>{errors}</div>
-        )}
+        {errors && <div>{errors}</div>}
         <div>Create an account and find some bandmates!</div>
-        <Link to="/logIn">
-          <button className="loginFields">
-            Already have an account?
-            Click here to log in.
+        <Link to='/logIn'>
+          <button className='loginFields'>
+            Already have an account? Click here to log in.
           </button>
         </Link>
-        <div id="signUpForm">
+        <div id='signUpForm'>
           <label>
             <form onSubmit={handleSubmit}>
               <input
-                className="loginFields"
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Craig Finn"
+                className='loginFields'
+                type='text'
+                id='name'
+                name='name'
+                placeholder='Craig Finn'
                 onChange={handleChange}
               />
               <input
-                className="loginFields"
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Username"
+                className='loginFields'
+                type='text'
+                id='username'
+                name='username'
+                placeholder='Username'
                 onChange={handleChange}
               />
               <input
-                className="loginFields"
-                type="text"
-                id="email"
-                name="email"
-                placeholder="kenny@loggins.com"
+                className='loginFields'
+                type='text'
+                id='email'
+                name='email'
+                placeholder='kenny@loggins.com'
                 onChange={handleChange}
               />
               <input
-                className="loginFields"
-                type="password"
-                id="password"
-                name="password"
-                placeholder="SickPassword420"
+                className='loginFields'
+                type='password'
+                id='password'
+                name='password'
+                placeholder='SickPassword420'
                 onChange={handleChange}
               />
-              <label for="instruments">
+              <label for='instruments'>
                 Choose an instrument:
                 <select
-                  id="instruments"
-                  name="instruments"
+                  id='instruments'
+                  name='instruments'
                   onChange={handleChange}
                   multiple
-                  className="loginFields"
+                  className='loginFields'
                 >
-                  <option value="vocals">Vocals</option>
-                  <option value="guitar">Guitar</option>
-                  <option value="bass">Bass</option>
-                  <option value="drum">Drums</option>
-                  <option value="piano">Piano</option>
-                  <option value="synth">Keyboard / Synth</option>
-                  <option value="drumMachine">Drum Machine</option>
-                  <option value="brass">Brass Instrument</option>
-                  <option value="string">String Instrument</option>
-                  <option value="percussion">Percussion</option>
+                  <option value='vocals'>Vocals</option>
+                  <option value='guitar'>Guitar</option>
+                  <option value='bass'>Bass</option>
+                  <option value='drum'>Drums</option>
+                  <option value='piano'>Piano</option>
+                  <option value='synth'>Keyboard / Synth</option>
+                  <option value='drumMachine'>Drum Machine</option>
+                  <option value='brass'>Brass Instrument</option>
+                  <option value='string'>String Instrument</option>
+                  <option value='percussion'>Percussion</option>
                 </select>
               </label>
-              <label for="genre">
+              <label for='genre'>
                 Choose a genre:
                 <select
-                  id="genre"
-                  name="genre"
+                  id='genre'
+                  name='genre'
                   onChange={handleChange}
                   multiple
-                  className="loginFields"
+                  className='loginFields'
                 >
-                  <option value="rock">Rock</option>
-                  <option value="punk">Punk</option>
-                  <option value="metal">Metal</option>
-                  <option value="hipHop">Hip-Hop</option>
-                  <option value="country">Country</option>
-                  <option value="soul">Soul</option>
-                  <option value="electronic">Electronic</option>
-                  <option value="pop">Pop</option>
-                  <option value="rnb">RnB / Neo-Soul</option>
-                  <option value="reggae">Reggaeton</option>
-                  <option value="folk">Folk</option>
+                  <option value='rock'>Rock</option>
+                  <option value='punk'>Punk</option>
+                  <option value='metal'>Metal</option>
+                  <option value='hipHop'>Hip-Hop</option>
+                  <option value='country'>Country</option>
+                  <option value='soul'>Soul</option>
+                  <option value='electronic'>Electronic</option>
+                  <option value='pop'>Pop</option>
+                  <option value='rnb'>RnB / Neo-Soul</option>
+                  <option value='reggae'>Reggaeton</option>
+                  <option value='folk'>Folk</option>
                 </select>
               </label>
               <select
-                id="skill"
-                name="skill"
+                id='skill'
+                name='skill'
                 onChange={handleChange}
-                className="loginFields"
+                className='loginFields'
               >
                 <option selected>How hard can you shred?</option>
-                <option value="amateur">Amateur</option>
-                <option value="professional">Professional</option>
+                <option value='amateur'>Amateur</option>
+                <option value='professional'>Professional</option>
               </select>
               <select
-                id="gender"
-                name="gender"
+                id='gender'
+                name='gender'
                 onChange={handleChange}
-                className="loginFields"
+                className='loginFields'
               >
                 <option selected>Pick a gender</option>
-                <option value="Woman">Woman</option>
-                <option value="Man">Man</option>
-                <option value="Non-binary">Non-binary</option>
+                <option value='Woman'>Woman</option>
+                <option value='Man'>Man</option>
+                <option value='Non-binary'>Non-binary</option>
               </select>
               <input
-                className="loginFields"
-                type="text"
-                name="location"
-                placeholder="Location, location, location"
+                className='loginFields'
+                type='text'
+                name='location'
+                placeholder='Location, location, location'
                 onChange={handleChange}
               />
               <input
-                className="loginFields"
-                type="text"
-                name="birthdate"
-                placeholder="1979-08-31"
+                className='loginFields'
+                type='text'
+                name='birthdate'
+                placeholder='1979-08-31'
                 onChange={handleChange}
               />
-              <input type="submit" value="Sign Up" />
+              <input type='submit' value='Sign Up' />
             </form>
           </label>
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default SignUp;
