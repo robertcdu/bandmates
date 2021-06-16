@@ -1,5 +1,7 @@
 const express = require('express');
 const userController = require('../controllers/userController');
+const cookieController = require('../controllers/cookieController');
+const sessionController = require('../controllers/sessionController');
 
 const router = express.Router();
 
@@ -18,10 +20,12 @@ router.get(
 router.get(
   '/login',
   userController.userLogin,
-  console.log()
-  (req, res, next) => {
-    res.status(200);
-  }
+  cookieController.createCookie,
+  (req, res) => {
+      res
+        .status(200)
+        .json(res.locals.isLoggedIn);
+    }
 );
 
 // Create a user
