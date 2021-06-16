@@ -3,7 +3,7 @@ const db = require('../models/usersModels');
 const userController = {};
 
 // user login
-userController.userLogin = async (req, res, next) => {
+userController.verifyUser = async (req, res, next) => {
 
   const { username, password } = req.body;
 
