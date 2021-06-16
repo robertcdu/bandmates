@@ -10,6 +10,16 @@ const LogIn = () => {
     console.log(username, password);
     // TODO: do some sort of put request with the username and password to start a session. 
     // fetch()
+    const options = {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({username: `${username}`, password: `${password}`})
+    }
+    fetch("/login", options)
+    .then(res => res.json())
+    .then(data => {
+        // response data is a boolean and userID- redirect to homepage (/users) upone truthry response - response is strored in state
+    })
       // .catch(err => setErrors(err));
   };
 
@@ -45,7 +55,7 @@ const LogIn = () => {
           />
         </form>
         <Link to="/signUp">
-          <button className="loginFields">
+          <button className="loginFields" onClick={handleLogIn}>
             Don't have an account?
             Click here to sign up.
           </button>
