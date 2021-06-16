@@ -8,7 +8,7 @@ userController.userLogin = async (req, res, next) => {
   const { username, password } = req.body;
 
   const createLoginQuery = 
-    'SELECT username, password_digest FROM users WHERE username=$1 AND password_digest=$2'
+    'SELECT username, password_digest, _id FROM users WHERE username=$1 AND password_digest=$2'
     
   const params = [
     username,
@@ -19,12 +19,12 @@ userController.userLogin = async (req, res, next) => {
     const user = await db.query(createLoginQuery, params);
 
     if (!user.rows.length) {
-      res.locals.isLoggedIn = { loggedIn: false };
-    } else if (user.rows[0].username = username) {
-      res.locals.isLoggedIn = { loggedIn: true };
-    };
+      return res.status(400).json({ loggedIn: false, message: 'Incorrect username or password' });
+    } 
 
-    //res.locals.user = user.rows[0];
+    res.locals.isLoggedIn = { loggedIn: true };
+    res.locals.user = user.rows[0];
+
     return next();
   } catch (error) {
     return next({
