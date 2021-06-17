@@ -97,7 +97,7 @@ h1 {
 
   /* TODO: COMMENTS LINE 99 BACK IN TO SHOW BACKGROUND IMAGE ON SIGN IN PAGE */
 
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("https://giffiles.alphacoders.com/524/52425.gif");
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 100%), url("https://giffiles.alphacoders.com/524/52425.gif");
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -212,7 +212,7 @@ form > label {
 
 .usersPage {
   /* background-image: url("https://pixnio.com/free-images/2018/12/08/2018-12-08-15-35-15-1200x900.jpg"); */
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("https://pixnio.com/free-images/2018/12/08/2018-12-08-15-35-15-1200x900.jpg");
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%), url("https://2.bp.blogspot.com/-_MU7-5TVpXc/T04jJs8REzI/AAAAAAAAEaM/Byp270v2do0/s1600/Dans+le+Townhouse_Black+White+Painting_Detail.jpg");
   /* opacity:;  */
   /* background-color: #baeee6; */
   background-size: cover;
@@ -233,7 +233,6 @@ form > label {
   margin: 15px 15px 15px 15px;
   color:black;
   text-decoration: none;
-  font-weight: ;
 }
 
 .redirect:visited {

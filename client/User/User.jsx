@@ -8,25 +8,27 @@ const User = () => {
   
   // TODO: there's probably a better way to get a user's ID from ReactRouterDom.
   const history = useHistory();
-  const userId = history.location.pathname.split('/users/');
-
+  const userId = history.location.pathname.split('/users/')[1];
   // TODO: in the future, user information should be fetched from 
   // backend via a get request to /api/users/:id
-  // useEffect(() => {
-  //   fetch(`/api/users/${ userId }`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setUser(data);
-  //     })
-  //     .catch(err => console.log(err));
-  // }, []);
+  useEffect(() => {
+    console.log("id", userId)
+    fetch(`/api/users/${userId}`)
+    .then(res => res.json())
+    .then(data => {
+        setUser(data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  console.log('user', user) //!
 
   if (!user) {
     return (
       <>
         <NavBar />
         <div>
-          Loading user ...
+          Loading user...
         </div>
       </>
     )
@@ -43,10 +45,17 @@ const User = () => {
     location,
     bio,
     skill_level: skillLevel,
-  } = user;
+  } = user.user;
   
   // TODO: use birthdate to format age.
-  const age = birthdate;
+  const formattedBirthdate = birthdate.slice(0,4);
+  const today = new Date().getFullYear()
+  console.log(today)
+  const age = today - formattedBirthdate;
+  // console.log(Date(formattedBirthdate))
+  
+
+  console.log(today)
   
   // TODO: format genres and instruments from arrays to strings
   // (once the backend is serving up arrays)
@@ -54,17 +63,18 @@ const User = () => {
   const formattedGenres = genres;
 
   return (
-    <>
+    <div>
       <NavBar />
-      <div>{name}</div>
-      <div>{username}</div>
-      <div>{formattedInstruments}</div>
-      <div>{formattedGenres}</div>
-      <div>{skillLevel}</div>
-      <div>{age} years old, {gender}, located in {location}</div>
-      <div>{bio}</div>
-      <div>{email}</div>
-    </>
+      <div className="userProfileBox">
+        <div><h1>{name}</h1></div>
+        <div className="profileBio">{bio}</div>
+        {/* <div>{formattedInstruments}</div>
+        <div>{formattedGenres}</div> */}
+        <div>{skillLevel}</div>
+        <div >Age: {age}</div>
+        <div>{email}</div>
+      </div>
+    </div>
   )
 };
 

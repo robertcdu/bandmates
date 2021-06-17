@@ -37,6 +37,7 @@ const Search = () => {
 			.catch(err => console.log(err));
 	}, []);
 
+	// console.log('searchresults:', searchResults);
 	// sperate lines 34 and 35 to new useffect
 
 	const labelToSetState = {

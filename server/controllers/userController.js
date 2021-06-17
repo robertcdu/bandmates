@@ -17,7 +17,7 @@ userController.verifyUser = async (req, res, next) => {
 		if (!user.rows.length) {
 			return res
 				.status(400)
-				.json({ loggedIn: false, message: 'Incorrect username or password' });
+			.json({ loggedIn: false, message: 'Incorrect username or password' })
 		}
 
 		res.locals.userVerified = { loggedIn: true };
@@ -90,26 +90,26 @@ userController.createUser = async (req, res, next) => {
 userController.viewUsers = async (req, res, next) => {
 	// find all instruments and genres played and preferred by a specific user id in the intermediary tables
 	const viewUsers = `
-    SELECT users.*, instruments.instrument_name as instruments, genre.genre_name as genres FROM users
+    SELECT users._id, users.name,	users.username,	users.email, users.password_digest, users.gender, users.birthdate,	users.location,	users.skill_level,	users.bio, instruments.instrument_name as instruments, genre.genre_name as genres FROM users
     INNER JOIN users_instruments ON users._id = users_instruments.user_id
     INNER JOIN instruments ON instruments._id = users_instruments.instrument_id
     INNER JOIN users_genres ON users._id = users_genres.user_id
     INNER JOIN genre ON genre._id = users_genres.genre_id
   `;
 
-  // laura's query
-  // const viewUsers = `
-  // SELECT _id, name, username, email, password_digest, gender, birthdate, location, skill_level, bio, genres, array_agg(instruments)
-  //   FROM ( 
-  //     SELECT users.*, instruments.instrument_name as instruments, array_agg(genre.genre_name) as genres FROM users
-  //     INNER JOIN users_instruments ON users._id = users_instruments.user_id
-  //     INNER JOIN instruments ON instruments._id = users_instruments.instrument_id
-  //     INNER JOIN users_genres ON users._id = users_genres.user_id
-  //     INNER JOIN genre ON genre._id = users_genres.genre_id
-  //     GROUP BY users._id, users.name, instruments.instrument_name
-  //     ) as foo
-  //   GROUP BY _id, name, username, email, password_digest, gender, birthdate, location, skill_level, bio, genres;
-  // `;
+	// laura's query
+	// const viewUsers = `
+	// SELECT _id, name, username, email, password_digest, gender, birthdate, location, skill_level, bio, genres, array_agg(instruments)
+	//   FROM ( 
+	//     SELECT users.*, instruments.instrument_name as instruments, array_agg(genre.genre_name) as genres FROM users
+	//     INNER JOIN users_instruments ON users._id = users_instruments.user_id
+	//     INNER JOIN instruments ON instruments._id = users_instruments.instrument_id
+	//     INNER JOIN users_genres ON users._id = users_genres.user_id
+	//     INNER JOIN genre ON genre._id = users_genres.genre_id
+	//     GROUP BY users._id, users.name, instruments.instrument_name
+	//     ) as foo
+	//   GROUP BY _id, name, username, email, password_digest, gender, birthdate, location, skill_level, bio, genres;
+	// `;
 
 
 
@@ -123,8 +123,6 @@ userController.viewUsers = async (req, res, next) => {
 		const users = await db.query(viewUsers);
 		const rows = users.rows;
 		const builtUsers = new Set();
-
-    console.log('rows', rows);
 
 		const formattedUsers = rows.reduce((acc, user) => {
 			if (builtUsers.has(user.username)) {
@@ -154,8 +152,6 @@ userController.viewUsers = async (req, res, next) => {
 		}, []);
 
 		res.locals.users = formattedUsers;
-
-    console.log(formattedUsers);
 		return next();
 	} catch (error) {
 		return next({
@@ -167,10 +163,20 @@ userController.viewUsers = async (req, res, next) => {
 
 //TODO: this middleware will find one user based on that user's ID.
 userController.findUser = async (req, res, next) => {
+	console.log('params:', req.params.id);
+	const userID = req.params.id;
 	try {
-		const findUser = undefined; //some selection
-		res.locals.user = await db.query(findUser); //.rows[0]; //let's look in the user router file now and
-		return next();
+		const findUser = {
+			text: 'SELECT users.* FROM users WHERE _id=$1;',
+			values: [userID]
+		}
+		const userData = await db.query(findUser); //.rows[0]; //let's look in the user router file now and
+
+		res.locals.user = userData.rows[0];
+
+		// console.log('finduser', res.locals.user);
+
+		return next()
 	} catch (error) {
 		return next({
 			error: `userController.findUser; ERROR: ${error} `,
