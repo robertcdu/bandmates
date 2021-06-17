@@ -242,7 +242,7 @@ form > label {
 
 .usersPageLinks {
   display: flex;
-  background-color: rgb(163, 163, 163);
+  background-color: #52a09fb3;
   justify-content: space-between;
 
 }
@@ -275,5 +275,17 @@ form > label {
   margin: 30px;
   background-color: white;
   justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 5px;
 }
 
+.searchResultName {
+  color: #499a99;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.errorMessage {
+  color: red;
+}
