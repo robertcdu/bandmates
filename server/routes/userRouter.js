@@ -7,7 +7,7 @@ const router = express.Router();
 
 // page after login
 router.get('/allusers', userController.viewUsers, (req, res, next) => {
-	res.status(200);
+  res.status(200).json({ users: res.locals.users });
 });
 
 router.get('/search', (req, res, next) => {
@@ -34,7 +34,6 @@ router.post('/signup', userController.createUser, (req, res, next) => {
 router.get('/:id', userController.findUser, (req, res, next) => {
 	res.status(200).json(res.locals.user);
 });
-
 
 // Delete a user
 router.delete('/:id', userController.deleteUser, (req, res, next) => {
