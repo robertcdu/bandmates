@@ -7,7 +7,11 @@
     "start": "cross-env NODE_ENV=production node server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"webpack serve --open\" \"nodemon ./server/server.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
+  },
+  "jest": {
+    "globalSetup": "./jest-setup.js",
+    "globalTeardown": "./jest-teardown.js"
   },
   "repository": {
     "type": "git",
@@ -30,18 +34,24 @@
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.1.0"
+    "redux": "^4.1.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/runtime": "^7.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.2.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "jest": "^23.6.0",
+    "node-mocks-http": "^1.10.1",
     "nodemon": "^2.0.7",
     "style-loader": "^2.0.0",
     "webpack": "^5.38.1",

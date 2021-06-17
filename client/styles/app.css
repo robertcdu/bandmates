@@ -97,8 +97,7 @@ h1 {
 
   /* TODO: COMMENTS LINE 99 BACK IN TO SHOW BACKGROUND IMAGE ON SIGN IN PAGE */
 
-  background-image: url("https://giffiles.alphacoders.com/524/52425.gif");
-  /* background-image: url("https://wallpaperaccess.com/full/1323873.jpg"); */
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("https://giffiles.alphacoders.com/524/52425.gif");
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -152,16 +151,16 @@ form > label {
 .searchResultsContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 10px;
+  justify-content: flex-start;
+  margin: 15px;
 }
 
 .searchResult {
   display: inline-block;
   flex-direction: column;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;  /* Top, Right, Bottom, Left */
   padding: 15px;
-  background-color: rgba(255,255,255, 0.9);
+  background-color: white;
   border: 2.5px transparent rgb(0, 0, 0);
   border-radius: 5px;
   width: 20%;
@@ -174,7 +173,7 @@ form > label {
   color: #767676;
 }
 
-.searchResult button:hover {
+/* .searchResult button:hover {
   cursor: pointer;
   color: #78c0b6;
   background-color: white;
@@ -186,14 +185,14 @@ form > label {
   box-shadow: 0px 15px 20px rgba(73, 73, 73, 0.4);
   transform: translateY(-7px);
   cursor: pointer;
-}
+} */
 
 #searchForm {
   display: flex;
   flex-direction: column;
-  margin: 0px 0px 10px 165px;
+  margin: 0px 0px 0px 15px;
   padding: 15px;
-  background-color: rgba(255,255,255, 0.9);
+  background-color: white;
   border: 2.5px transparent rgb(0, 0, 0);
   border-radius: 5px;
   width: 40.75%;
@@ -212,7 +211,8 @@ form > label {
 }
 
 .usersPage {
-  background-image: url("https://giffiles.alphacoders.com/524/52425.gif");
+  /* background-image: url("https://pixnio.com/free-images/2018/12/08/2018-12-08-15-35-15-1200x900.jpg"); */
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("https://pixnio.com/free-images/2018/12/08/2018-12-08-15-35-15-1200x900.jpg");
   /* opacity:;  */
   /* background-color: #baeee6; */
   background-size: cover;
@@ -220,12 +220,23 @@ form > label {
   width: 100vw;
 }
 
+
 .usersPageLinks {
   display: flex;
-  flex-direction: column;
+  background-color: white;
   margin-bottom: 20px;
+  justify-content: space-between;
+
 }
 
 .redirect {
-  margin: 10px 165px;
+  margin: 15px 15px 15px 15px;
+  color:black;
+  text-decoration: none;
+  font-weight: ;
+}
+
+.redirect:visited {
+  color: black;
+  text-decoration: none;
 }
