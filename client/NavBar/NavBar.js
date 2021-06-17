@@ -14,11 +14,11 @@ const NavBar = () => (
       <Link to={`/users/${id}`}>View profile</Link>
     </div> */}
 
-    <Link to="/users" className="redirect">Search musicians</Link>
+    <Link to="/users" className="redirect"><strong>Search Musicians</strong></Link>
 
     {/* TODO: clicking "Log out" should actually log a user out,
       not just redirect them to the logIn page.  */}
-    <Link to="/logIn" className="redirect">Log out</Link>
+    <Link to="/logIn" className="redirect"><strong>Log out</strong></Link>
 
   </div>
 );

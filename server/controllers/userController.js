@@ -97,6 +97,22 @@ userController.viewUsers = async (req, res, next) => {
     INNER JOIN genre ON genre._id = users_genres.genre_id
   `;
 
+  // laura's query
+  // const viewUsers = `
+  // SELECT _id, name, username, email, password_digest, gender, birthdate, location, skill_level, bio, genres, array_agg(instruments)
+  //   FROM ( 
+  //     SELECT users.*, instruments.instrument_name as instruments, array_agg(genre.genre_name) as genres FROM users
+  //     INNER JOIN users_instruments ON users._id = users_instruments.user_id
+  //     INNER JOIN instruments ON instruments._id = users_instruments.instrument_id
+  //     INNER JOIN users_genres ON users._id = users_genres.user_id
+  //     INNER JOIN genre ON genre._id = users_genres.genre_id
+  //     GROUP BY users._id, users.name, instruments.instrument_name
+  //     ) as foo
+  //   GROUP BY _id, name, username, email, password_digest, gender, birthdate, location, skill_level, bio, genres;
+  // `;
+
+
+
 	// This is getting a table showing all the users and the instruments and genres they like
 	// select users.*, instruments.instrument_name as instruments, genre.genre_name as genres  from users inner join users_instruments on users._id = users_instruments.user_id inner join instruments on instruments._id =
 	//   users_instruments.instrument_id INNER JOIN users_genres on users._id = users_genres.user_id INNER JOIN genre on genre._id = users_genres.genre_id
