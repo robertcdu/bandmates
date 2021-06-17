@@ -50,14 +50,14 @@ const LogIn = () => {
             type='text'
             id='username'
             name='username'
-            placeholder='kenny@loggins.com'
+            placeholder='ian@bbygorl.com'
           />
           <input
             className='loginFields'
             type='password'
             id='password'
             name='password'
-            placeholder='SickPassword420'
+            placeholder='SuperSecretPassword'
           />
           <input className='loginFields' type='submit' value='Log In' />
           {/* <button className='loginFields' onClick={handleLogIn}>Log In</button> */}

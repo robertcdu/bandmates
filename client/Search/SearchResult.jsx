@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link, useHistory } from 'react-router-dom';
 /*
 
 The SearchResult component receives its props from the 
@@ -19,6 +19,7 @@ provide a Link (via React Router) to /users/:id.
 */
 
 const SearchResult = ({
+  _id,
   name,
   location,
   instruments,
@@ -32,6 +33,9 @@ const SearchResult = ({
   const toggleBio = () => setIsBioShowing(!isBioShowing);
   const formattedInstruments = instruments.join(", ");
   const formattedGenres = genres.join(", ");
+
+  // const history = useHistory();
+  // const userId = history.location.pathname.split('/users/')[1];
 
   return (
     <div className="searchResult">
@@ -54,6 +58,7 @@ const SearchResult = ({
       <button onClick={toggleBio}>
         {isBioShowing ? 'Show less information' : 'Show more information'}
       </button>
+      <Link to={`/users/${_id}`}>Go to profile</Link>
     </div>
   )
 };

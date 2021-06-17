@@ -10,10 +10,6 @@ router.get('/allusers', userController.viewUsers, (req, res, next) => {
   res.status(200).json({ users: res.locals.users });
 });
 
-router.get('/search', (req, res, next) => {
-	res.status(200);
-});
-
 // redirect to a page
 
 router.post(
@@ -31,18 +27,18 @@ router.post('/signup', userController.createUser, (req, res, next) => {
 });
 
 // Get one user
-router.get('/:id', userController.findUser, (req, res, next) => {
-	res.status(200).json(res.locals.user);
+router.get('/users/:id' ,userController.findUser, (req, res, next) => {
+	res.status(200).json({ user: res.locals.user });
 });
 
-// Delete a user
-router.delete('/:id', userController.deleteUser, (req, res, next) => {
-	res.sendStatus(200);
-});
+// // Delete a user
+// router.delete('/:id', userController.deleteUser, (req, res, next) => {
+// 	res.sendStatus(200);
+// });
 
-// Update a user
-router.patch('/:id', userController.updateUser, (req, res, next) => {
-	res.status(200).json(res.locals.user);
-});
+// // Update a user
+// router.patch('/:id', userController.updateUser, (req, res, next) => {
+// 	res.status(200).json(res.locals.user);
+// });
 
 module.exports = router;
