@@ -57,8 +57,8 @@ const SearchResult = ({
       )}
       <button onClick={toggleBio}>
         {isBioShowing ? 'Show less information' : 'Show more information'}
-      </button>
-      <Link to={`/users/${_id}`}>Go to profile</Link>
+      </button><br/>
+      <button className="goToProfileButton"><Link className="goToProfileLink" to={`/users/${_id}`}>Go to profile</Link></button>
     </div>
   )
 };

@@ -65,15 +65,18 @@ const User = () => {
   return (
     <div>
       <NavBar />
-      <div className="userProfileBox">
-        <div><h1>{name}</h1></div>
-        <div className="profileBio">{bio}</div>
-        {/* <div>{formattedInstruments}</div>
-        <div>{formattedGenres}</div> */}
-        <div>{skillLevel}</div>
-        <div >Age: {age}</div>
-        <div>{email}</div>
+      <div className="userProfilePage">
+          <div className="userProfileBox">
+            <div><h1>{name}</h1></div>
+            <div className="profileBio">{bio}</div>
+            {/* <div>{formattedInstruments}</div>
+            <div>{formattedGenres}</div> */}
+            <div>Skill Level: {skillLevel}</div>
+            <div>Age: {age}</div>
+            <div>{email}</div>
+          </div>
       </div>
+      
     </div>
   )
 };
