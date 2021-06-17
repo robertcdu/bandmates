@@ -39,8 +39,8 @@ const SearchResult = ({
 
   return (
     <div className="searchResult">
-      <div>Name: {name}</div>
-      <div>Location: {location}</div>
+      <div className="searchResultName">{name}</div>
+      {/* <div>Location: {location}</div> */}
       <div>Skill level: {skillLevel}</div>
       <div>Instruments: {formattedInstruments}</div>
       <div>Genres: {formattedGenres}</div>

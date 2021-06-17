@@ -43,7 +43,7 @@ const LogIn = () => {
       <div id='signUpContainer'>
         <h1>Bandmates</h1>
         {errors && <div className='loginFields'>{errors}</div>}
-        { (message.length) ? (<div className= "error message">Sorry, your username or password is incorrect. Please try again.</div>) : null}
+        { (message.length) ? (<div className= "errorMessage">Sorry, your username or password is incorrect. Please try again.</div>) : null}
         <form onSubmit={handleLogIn}>
           <input
             className='loginFields'
